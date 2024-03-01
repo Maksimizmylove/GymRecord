@@ -1,0 +1,125 @@
+{% extends 'base.html' %} 
+{% block title %} 
+Присоединяйся 
+{% endblock title%}
+{% block head %}
+
+<h1>Присоединяйся к GymRecord</h1>
+    
+
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6">
+      {% for message in messages %}
+      <div
+        class="alert alert-{{message.tags}} alert-dismissible fade show"
+        role="alert"
+      >
+        <strong></strong> {{message}}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %}
+
+      <form action="/join" method="post">{% csrf_token %}
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            name="FullName"
+            placeholder="Введите имя"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control mt-2"
+            value="{{user.email}}"
+            name="email"
+            placeholder="Введите Email"
+            readonly
+            required
+          />
+        </div>
+
+        <div class="form-group">
+
+          <select class="form-control mt-2" id="gender" name="gender" required>
+            <option selected>Пол</option>
+            <option value="Male">Мужской</option>
+            <option value="Female">Женский</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="number"
+            class="form-control mt-2"
+            value="{{user.username}}"
+            name="PhoneNumber"
+            placeholder="Введите номер телефона"
+            readonly
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="date"
+            class="form-control mt-2"
+            name="DOB"
+            placeholder="Дата рождения"
+            required
+          />
+        </div>
+
+
+        <div class="form-group">
+           
+                     <select  class="form-control mt-2" id="member" name="member"  required>
+                     <option selected>Выберите план членства</option>
+                          {% for  p in Membership %}
+                          
+
+<option value="{{p.plan}} - {{p.price}}">{{p.plan}} - {{p.price}} Руб</option>
+{% endfor %}
+
+</select>
+                
+
+
+            </div>
+        <div class="form-group">
+           
+                     <select  class="form-control mt-2" id="trainer" name="trainer"  required>
+                     <option selected> Выберете тренера </option>
+                          {% for  p in SelectTrainer %}
+                          
+
+<option value="{{p.name}}">{{p.name}}</option>
+{% endfor %}
+
+</select>
+            </div>
+                                           
+        <br />
+        <div class="d-grid gap-2">
+          <button class="btn btn-warning" type="submit">Присоедениться</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+{% endblock head %}

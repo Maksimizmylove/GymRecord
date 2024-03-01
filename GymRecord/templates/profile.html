@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+Профиль
+{% endblock title %}
+{% block body %}
+
+<div class="container">
+
+    <div class="row">
+    
+    <div class="col-md-4">
+      
+    <h1>Ваши данные</h1>
+
+    {% for post in posts %}
+    
+    <ul class="list-group">
+        <li class="list-group-item bg-warning text-dark"><h5>Имя : {{post.FullName}}</h5></li>
+        <li class="list-group-item bg-warning text-dark"><h5>Email : {{post.Email}}</h5></li>
+        <li class="list-group-item bg-warning text-dark"><h5>Пол : {{post.Gender}}</h5></li>
+        <li class="list-group-item bg-warning text-dark"><h5>Номер телефона : {{post.PhoneNumber}}</h5></li>
+        <li class="list-group-item bg-warning text-dark"><h5>Дата рождения : {{post.DOB}}</h5></li>
+        <li class="list-group-item bg-warning text-dark"><h5>План членства : {{post.SelectMembershipplan}}</h5></li>
+        <li class="list-group-item bg-warning text-dark"><h5>Тренер : {{post.SelectTrainer}}</h5></li>
+        <li class="list-group-item bg-warning text-dark"><h5>Статус платежа : {{post.paymentStatus}}</h5></li>
+        <li class="list-group-item bg-warning text-dark"><h5>Уплаченная сумма : {{post.Price}}</h5></li>
+        <li class="list-group-item bg-warning text-dark"><h5>Срок оплаты : {{post.DueDate}}</h5></li>
+        <li class="list-group-item bg-warning text-dark"><h5>Дата присоединения : {{post.timeStamp}}</h5></li>  
+      </ul>
+      {% endfor %}
+    </div>
+    
+    <div class="col-md-8">
+
+      <div><Center><h2 class="display-4 mt-3"><b>Даты посещаемости</b></h2></Center></div>
+
+      <table class="table">
+        <thead class="thead-warning">
+          <tr>
+          
+            <th scope="col">Дата</th>
+            <th scope="col">Начало</th>
+            <th scope="col">Конец</th>
+            <th scope="col">Тренировка</th>
+            <th scope="col">Тренер</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for attend in attendance %}
+          <tr>
+            
+            <td>{{attend.Selectdate}}</td>
+            <td>{{attend.Login}}</td>
+            <td>{{attend.Logout}}</td>
+            <td>{{attend.SelectWorkout}}</td>
+            <td>{{attend.TrainedBy}}</td>    
+           
+          </tr>
+          {% endfor %}
+        
+        </tbody>
+      </table>
+    </div>    
+  </div>
+{% endblock body %}
