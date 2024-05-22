@@ -1,7 +1,32 @@
 {% extends 'base.html' %}
+
+{% block menu %}
+<nav id="navbar" class="navbar order-last order-lg-0">
+  <ul>
+    <li><a class="nav-link scrollto" href="/">Начальная страница</a></li>
+    <li><a class="nav-link scrollto active" href="/gallery">Портфолио</a></li>
+    <li><a class="nav-link scrollto" href="/contact">Контакты</a></li>
+    <li class="dropdown"><a href="#"><span>Членство</span> <i class="bi bi-chevron-down"></i></a>
+      <ul>
+        <li><a href="/join">Присоедениться</a></li>
+        <li><a href="/attendance">Посещаемость</a></li>
+        <li><a href="/profile">Профиль</a></li>
+      </ul>
+    </li>
+  </ul>
+  <i class="bi bi-list mobile-nav-toggle"></i>
+</nav><!-- .navbar -->
+{% endblock menu %}
+
 {% block title %}
 Портфолио
 {% endblock title %}
+
+{% block head %}
+<h1>Портфолио GymRecord<span>.</span></h1>
+<h2>Здесь собраны все снимки с наших мероприятий</h2>
+{% endblock head %}
+
 {% block body %}
 
 <div class="container mt-2">

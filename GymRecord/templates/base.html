@@ -42,26 +42,15 @@
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="static/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="/">Начальная страница</a></li>
-          <li><a class="nav-link scrollto" href="/about">О нас</a></li>
-          <li><a class="nav-link scrollto" href="/services">Услуги</a></li>
-          <li><a class="nav-link scrollto " href="/gallery">Портфолио</a></li>
-          <li><a class="nav-link scrollto" href="/contact">Контакты</a></li>
-          <li class="dropdown"><a href="#"><span>Членство</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="/join">Присоедениться</a></li>
-              <li><a href="#">Тренировки</a></li>
-              <li><a href="/attendance">Посещаемость</a></li>
-              <li><a href="/profile">Профиль</a></li>
-            </ul>
-          </li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      {% block menu %}
 
+      {% endblock menu %}
+
+      {% if not request.user.is_authenticated %}
       <a href="/signup" class="get-started-btn scrollto">Войти</a>
+      {% else %}
+      <a href="/logout" class="get-started-btn scrollto">Выйти</a>
+      {% endif %}
 
     </div>
   </header><!-- End Header -->
