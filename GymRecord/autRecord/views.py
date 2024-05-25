@@ -49,7 +49,7 @@ def signup(request):
         pass1=request.POST.get('pass1')
         pass2=request.POST.get('pass2')
       
-        if len(username)>10 or len(username)<10:
+        if len(username)<10:
             messages.info(request,"Номер телефона должен содержать 10 цифр")
             return redirect('/signup')
 
